@@ -16,10 +16,15 @@ driver.navigate.to "http://www.squarespace.com"
 element = driver.find_element(:class, 'customer-login')
 element.click
 
-binding.pry
+
+
+# wait for a specific element to show up
+wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
+wait.until { driver.find_element(:id => "yui_3_10_1_1_1376894047556_573") }
+
 # find username field
-element = driver.find_element(:id, 'yui_3_10_1_1_1376682694457_1250')
-binding.pry
+element = driver.find_element(:id, 'yui_3_10_1_1_1376894047556_573')
+
 # enter username
 element.send_keys squarespace["user"]
 
