@@ -1,0 +1,2 @@
+gem 'selenium'
+gem 'pry'

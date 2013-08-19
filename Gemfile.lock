@@ -1,0 +1,21 @@
+GEM
+  specs:
+    coderay (1.0.9)
+    jar_wrapper (0.1.7)
+      zip
+    method_source (0.8.1)
+    pry (0.9.12.2)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    selenium (0.2.10)
+      jar_wrapper
+    slop (3.4.5)
+    zip (2.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  pry
+  selenium
