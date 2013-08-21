@@ -4,6 +4,8 @@
 require 'yaml'
 require 'pry'
 require "selenium-webdriver"
+require 'rss'
+require 'open-uri'
 
 data = YAML.load_file('data.yml')
 pinterest_boards = data["pinterest_boards"]
@@ -62,6 +64,32 @@ confirmbox = driver.execute_script("document.getElementById('mode_html').click()
 #a = driver.switch_to.alert # switch context to confirmation box
 #a.accept # accept switch to html edit mode
 
+
+# parse rss for new entries, and then add them
+
+# define what a new entry is
+def is_new?(url)
+  
+end
+
+# save url to list of pinterest pins already blogged
+def save_url(url)
+end
+
+# find new entries
+# add them
+
+data["pinterest_boards"].each do |board_url|
+  open(board_url) do |rss|
+
+    feed = RSS::Parser.parse(rss)
+
+    binding.pry
+   
+  end
+end
+
+binding.pry
 
 # enter blog entry title
 wait = Selenium::WebDriver::Wait.new(:timeout => 20) # seconds
