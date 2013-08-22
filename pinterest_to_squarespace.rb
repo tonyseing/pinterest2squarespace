@@ -101,7 +101,7 @@ end
 # find new entries
 # add them
 
-data["pinterest_boards"].each do |board_url|
+data["pinterest_boards_jollybox"].each do |board_url|
   open(board_url) do |rss|
     begin
       feed = SimpleRSS.parse open(rss)
@@ -112,7 +112,7 @@ data["pinterest_boards"].each do |board_url|
     feed.items.each do |pin|
       if is_new?(pin)
         publish_pin(pin[:title], pin[:description])
-        save_new(pin[:link])
+        save_new(pin)
       end
     end
   end
