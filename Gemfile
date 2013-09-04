@@ -6,5 +6,5 @@ gem 'sqlite3'
 gem 'simple-rss'
 gem 'data_mapper'
 gem 'dm-sqlite-adapter'
-
+gem 'daemons'
 

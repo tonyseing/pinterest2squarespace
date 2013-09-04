@@ -6,6 +6,7 @@ GEM
     childprocess (0.3.9)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.0.9)
+    daemons (1.1.9)
     data_mapper (1.2.0)
       dm-aggregates (~> 1.2.0)
       dm-constraints (~> 1.2.0)
@@ -81,6 +82,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  daemons
   data_mapper
   dm-sqlite-adapter
   pry

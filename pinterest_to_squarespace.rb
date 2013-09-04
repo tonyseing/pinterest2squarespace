@@ -98,25 +98,30 @@ def publish_pin(title, content)
   element.click
 end
 
-# find new entries
-# add them
 
-data["pinterest_boards_jollybox"].each do |board_url|
-  open(board_url) do |rss|
-    begin
-      feed = SimpleRSS.parse open(rss)
-    rescue Exception => e
-      puts e
-
-    end
-    feed.items.each do |pin|
-      if is_new?(pin)
-        publish_pin(pin[:title], pin[:description])
-        save_new(pin)
+loop do
+  # find new entries
+  # add them
+  data["pinterest_boards_jollybox"].each do |board_url|
+    open(board_url) do |rss|
+      begin
+        feed = SimpleRSS.parse open(rss)
+      rescue Exception => e
+        puts e
+      end
+      feed.items.each do |pin|
+        if is_new?(pin)
+          publish_pin(pin[:title], pin[:description])
+          save_new(pin)
+        end
       end
     end
   end
+  
+  puts "Finished migration at #{Time.now}"
+  sleep(10)
 end
+
 
 
 
