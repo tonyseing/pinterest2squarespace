@@ -1,0 +1,13 @@
+pinterest_boards: 
+                  - http://pinterest.com/mattinnewyork/products-i-love.rss
+                  - http://pinterest.com/mattinnewyork/interior-design.rss
+
+pinterest_boards_jollybox:
+        - http://jollybox.de/pinterestfeed/rss/mattinnewyork/products-i-love
+        - http://jollybox.de/pinterestfeed/rss/mattinnewyork/interior-design 
+
+squarespace_login:
+        username: thingsihaveseen
+        password: me2906
+        login_url: https://thingsihaveseen.squarespace.com/process/Login?encryptedPassword=cg45OfXo5AFNRkDP6Jq%2Bkx0LFCU%3D&password=&loginStyle=direct&returnUrl=%2Fdisplay%2Fconfiguration%2FHome
+

@@ -23,6 +23,7 @@ class Pin
   include DataMapper::Resource
   property :id,         Serial    # An auto-increment integer key
   property :url,      Text    # A varchar type string, for
+  property :board, String
 end
 
 DataMapper.finalize
@@ -45,10 +46,11 @@ def is_new?(pin)
 end
 
 # save url to list of pinterest pins already blogged
-def save_new(pin)
+def save_new(pin, board_url)
   begin
     newPin = Pin.new
     newPin.url = pin[:link]
+    newPin.board = board_url
     newPin.save
   rescue Exception => e
     puts e
@@ -86,7 +88,7 @@ def publish_pin(title, content)
   wait.until { $driver.find_element(:css => 'textarea#body') }
   element = $driver.find_element(:css => 'textarea#body')
   element.click #click to initialize editiable area
-  element.send_keys CGI.unescapeHTML(content)
+  element.send_keys CGI.unescapeHTML(content.to_s)
 
   # switch back to default context
   $driver.switch_to.default_content
@@ -112,14 +114,14 @@ loop do
       feed.items.each do |pin|
         if is_new?(pin)
           publish_pin(pin[:title], pin[:description])
-          save_new(pin)
+          save_new(pin, board_url)
         end
       end
     end
   end
   
   puts "Finished migration at #{Time.now}"
-  sleep(10)
+  sleep(1)
 end
 
 
