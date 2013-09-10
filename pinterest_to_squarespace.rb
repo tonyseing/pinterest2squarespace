@@ -81,7 +81,7 @@ def publish_pin(title, content)
   wait.until { $driver.find_element(:css => '#titleData') }
   element = $driver.find_element(:css => '#titleData')
   element.clear #click to erase current text content
-  element.send_keys title
+  element.send_keys CGI.unescape(title)
 
   # enter blog entry content
   wait = Selenium::WebDriver::Wait.new(:timeout => 20) # seconds
@@ -101,7 +101,7 @@ def publish_pin(title, content)
 end
 
 
-loop do
+#loop do
   # find new entries
   # add them
   data["pinterest_boards_jollybox"].each do |board_url|
@@ -121,8 +121,8 @@ loop do
   end
   
   puts "Finished migration at #{Time.now}"
-  sleep(1)
-end
+ # sleep(600)
+#end
 
 
 
